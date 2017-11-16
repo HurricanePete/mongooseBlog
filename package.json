@@ -2,7 +2,7 @@
   "name": "blog-with-mongoose",
   "version": "1.0.0",
   "description": "blog project with json",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
     "test": "mocha",
     "start": "node server.js"

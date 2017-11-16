@@ -1,6 +1,8 @@
 const bodyParser = require('body-parser');
 const express = require('express');
-const mongoose = require('mongoos');
+const mongoose = require('mongoose');
+const morgan = require('morgan');
+
 
 mongoose.Promise = global.Promise;
 
@@ -8,12 +10,13 @@ const {PORT, DATABASE_URL} = require('./config');
 const {blog} = require('./models');
 
 const app = express();
+app.use(morgan('common'));
 app.use(bodyParser.json());
 
 app.get('/blog-posts', (req, res) => {
+	console.log('finding something..');
 	blog
 	.find()
-	.limit(10)
 	.then(blogEntries => {
 		res.json({
 			blogEntries: blogEntries.map(
@@ -38,7 +41,7 @@ app.get('blog-posts/:id', (req, res) => {
 });
 
 app.post('/blog-posts', (req, res) => {
-	const requiredFields = ['title', 'content', 'author' 'etc'];
+	const requiredFields = ['title', 'content', 'author'];
 	for (let i = 0; i<requiredFields.length; i++) {
 		const field = requiredFields[i];
 		if (!(field in req.body)) {
