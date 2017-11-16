@@ -11,6 +11,7 @@ const app = express();
 app.use(bodyParser.json());
 
 app.get('/blog-posts', (req, res) => {
+	blog
 	.find()
 	.limit(10)
 	.then(blogEntries => {
