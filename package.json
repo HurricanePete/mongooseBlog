@@ -8,13 +8,26 @@
     "start": "node server.js"
   },
   "dependencies": {
-    "body-parser": "", 
-    "express": "", 
-    "mongoose":"", 
-    "morgan":"",
-    "uuid": ""
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "mocha": "^4.0.1",
+    "mongoose": "^4.13.2",
+    "morgan": "^1.9.0",
+    "uuid": "^3.1.0"
   },
-  "keywords": ["node", "hyperdev", "express"],
+  "keywords": [
+    "node",
+    "hyperdev",
+    "express"
+  ],
   "author": "Scott O",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/scottiedog45/mongooseBlog.git"
+  },
+  "bugs": {
+    "url": "https://github.com/scottiedog45/mongooseBlog/issues"
+  },
+  "homepage": "https://github.com/scottiedog45/mongooseBlog#readme"
 }
