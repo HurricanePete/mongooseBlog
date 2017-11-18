@@ -1,8 +1,6 @@
 const bodyParser = require('body-parser');
 const express = require('express');
 const mongoose = require('mongoose');
-const morgan = require('morgan');
-
 
 mongoose.Promise = global.Promise;
 
@@ -10,17 +8,16 @@ const {PORT, DATABASE_URL} = require('./config');
 const {blog} = require('./models');
 
 const app = express();
-app.use(morgan('common'));
 app.use(bodyParser.json());
 
-app.get('/blog-posts', (req, res) => {
+app.get('/blog-posts', (req, res) => { 
 	console.log('finding something..');
 	blog
-	.find()
+	.find() 
 	.then(blogEntries => {
 		res.json({
 			blogEntries: blogEntries.map(
-				(blogEntries) => blogEntries.apiRepr())
+				(blogEntry) => blogEntry.apiRepr())
 		});
 	})
 	.catch(
