@@ -13,19 +13,19 @@ app.use(bodyParser.json());
 app.get('/blog-posts', (req, res) => { 
 	console.log('finding something..');
 	blog
-	.find() 
-	.then(blogEntries => {
+	.find({})
+	.exec()
+	.then(function(blogEntries) {
 		res.json({
 			blogEntries: blogEntries.map(
 				(blogEntry) => blogEntry.apiRepr())
-		});
-	})
-	.catch(
-		err => {
-			console.error(err);
-			res.status(500).json({message: 'Internal server error'});
-		});
-});
+		})
+		.catch(function(error) {
+			res.status(500).json({message: 'Internal server error'})
+		})
+		
+	});	
+	}); 
 
 app.get('blog-posts/:id', (req, res) => {
 	blog

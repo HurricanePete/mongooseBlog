@@ -6,8 +6,7 @@ const blogSchema = mongoose.Schema({
 	author: {
 		firstName: String,
 		lastName: String
-		},
-	created: {type: Date, default: Date.now}
+		}
 })
 
 blogSchema.virtual('authorName').get(function() {
@@ -19,8 +18,7 @@ blogSchema.methods.apiRepr = function () {
 		id: this._id,
 		title: this.title,
 		author:this.authorName,
-		content: this.content,
-		created: this.created
+		content: this.content
 	};
 }
 
