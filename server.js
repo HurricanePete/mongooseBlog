@@ -11,21 +11,21 @@ const app = express();
 app.use(bodyParser.json());
 
 app.get('/blog-posts', (req, res) => { 
-	console.log('finding something..');
 	blog
-	.find({})
-	.exec()
-	.then(function(blogEntries) {
+	.find()
+	// .exec()
+	.then(blogEntries => {
 		res.json({
 			blogEntries: blogEntries.map(
 				(blogEntry) => blogEntry.apiRepr())
+		});
 		})
-		.catch(function(error) {
-			res.status(500).json({message: 'Internal server error'})
-		})
-		
-	});	
-	}); 
+	.catch(
+		err => {
+			console.error(err);
+			res.status(500).json({message: 'Internal server error'}) 
+	});
+}); 
 
 app.get('blog-posts/:id', (req, res) => {
 	blog

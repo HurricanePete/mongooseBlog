@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 
 const blogSchema = mongoose.Schema({
-	title: {type: String, required: true},
-	content: {type: String},
+	title: String,
+	content: String,
 	author: {
 		firstName: String,
 		lastName: String
@@ -13,7 +13,7 @@ blogSchema.virtual('authorName').get(function() {
 	return `${this.author.firstName} ${this.author.lastName}`.trim();
 });
 
-blogSchema.methods.apiRepr = function () {
+blogSchema.methods.apiRepr = function() {
 	return {
 		id: this._id,
 		title: this.title,
@@ -22,6 +22,6 @@ blogSchema.methods.apiRepr = function () {
 	};
 }
 
-const blog = mongoose.model('blog', blogSchema);
+const blog = mongoose.model('Restaurant', blogSchema);
 
 module.exports = {blog};
